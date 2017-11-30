@@ -1,0 +1,7 @@
+#ignore compiled code
+*.pyc
+
+#ignore developement files
+*.pylintrc
+/.vscode/
+/adventofcode2017/**/test/
