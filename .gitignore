@@ -4,4 +4,4 @@
 #ignore developement files
 *.pylintrc
 /.vscode/
-/adventofcode2017/**/test/
+/adventofcode/**/test/
