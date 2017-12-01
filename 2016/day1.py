@@ -1,6 +1,39 @@
 """Advent of Code 2016 Day 1 No Time for a Taxicab"""
+# Santa's sleigh uses a very high-precision clock to guide its movements,
+# and the clock's oscillator is regulated by stars. Unfortunately, the stars
+# have been stolen... by the Easter Bunny. To save Christmas, Santa needs
+# you to retrieve all fifty stars by December 25th.
+# 
+# Collect stars by solving puzzles. Two puzzles will be made available on
+# each day in the advent calendar; the second puzzle is unlocked when you
+# complete the first. Each puzzle grants one star. Good luck!
+# 
+# You're airdropped near Easter Bunny Headquarters in a city somewhere.
+# "Near", unfortunately, is as close as you can get - the instructions on
+# the Easter Bunny Recruiting Document the Elves intercepted start here, and
+# nobody had time to work them out further.
+# 
+# The Document indicates that you should start at the given coordinates
+# (where you just landed) and face North. Then, follow the provided
+# sequence: either turn left (L) or right (R) 90 degrees, then walk forward
+# the given number of blocks, ending at a new intersection.
+# 
+# There's no time to follow such ridiculous instructions on foot, though, so
+# you take a moment and work out the destination. Given that you can only
+# walk on the street grid of the city, how far is the shortest path to the
+# destination?
+# 
+# For example:
+# 
+# -Following R2, L3 leaves you 2 blocks East and 3 blocks North, or 5 blocks
+# away.
+# -R2, R2, R2 leaves you 2 blocks due South of your starting position, which
+# is 2 blocks away.
+# -R5, L5, R5, R3 leaves you 12 blocks away.
+# 
+# How many blocks away is Easter Bunny HQ?
 import re
-from collections import deque, namedtuple
+from collections import deque
 
 class Elf(object):
     """Elf class"""
@@ -8,19 +41,6 @@ class Elf(object):
         self.compass = compass
         self.x = x
         self.y = y
-
-class Elf2(Elf):
-    def __init__(self, compass, x, y, visited):
-        super(Elf2, self).__init__(compass, x, y)
-        self.visited = visited
-
-    def record_location(self):
-        point = (self.x, self.y)
-        if self.visited.has_key(point) is True:
-            print str(abs(self.x) + abs(self.y))
-            exit()
-        else:
-            self.visited[point] = True
 
 def turn(direction, elf):
     """Turn the compass of a an elf"""
@@ -40,6 +60,30 @@ def walk(steps, elf):
     elif elf.compass[0] == 'W':
         elf.x = elf.x - int(steps)
 
+def direction_generator(directions):
+    """Direction Generator"""
+    for field in re.finditer(r"[A-Z0-9]+", directions):
+        yield field.group(0)
+
+def solve1(sequence):
+    """Solve the puzzle part 1"""
+    paratrooper_elf = Elf(deque(['N', 'E', 'S', 'W']), 0, 0)
+    for direction in direction_generator(sequence):
+        turn(re.search(r'[RL]', direction).group(0), paratrooper_elf)
+        walk(re.search(r'\d+', direction).group(0), paratrooper_elf)
+    print abs(paratrooper_elf.x) + abs(paratrooper_elf.y)
+
+# --- Part Two ---
+# 
+# Then, you notice the instructions continue on the back of the Recruiting
+# Document. Easter Bunny HQ is actually at the first location you visit
+# twice.
+# 
+# For example, if your instructions are R8, R4, R4, R8, the first location
+# you visit twice is 4 blocks away, due East.
+# 
+# How many blocks away is the first location you visit twice?
+
 def walk2(steps, elf):
     """Walk forward noting each step"""
     for _ in range(int(steps)):
@@ -53,18 +97,20 @@ def walk2(steps, elf):
             elf.x = elf.x - 1
         elf.record_location()
 
-def direction_generator(directions):
-    """Direction Generator"""
-    for field in re.finditer(r"[A-Z0-9]+", directions):
-        yield field.group(0)
+class Elf2(Elf):
+    """Enhance Elf Class"""
+    def __init__(self, compass, x, y, visited):
+        super(Elf2, self).__init__(compass, x, y)
+        self.visited = visited
 
-def solve1(sequence):
-    """Solve the puzzle part 1"""
-    paratrooper_elf = Elf(deque(['N', 'E', 'S', 'W']), 0, 0)
-    for direction in direction_generator(sequence):
-        turn(re.search(r'[RL]', direction).group(0), paratrooper_elf)
-        walk(re.search(r'\d+', direction).group(0), paratrooper_elf)
-    print abs(paratrooper_elf.x) + abs(paratrooper_elf.y)
+    def record_location(self):
+        """Record current Location"""
+        point = (self.x, self.y)
+        if self.visited.has_key(point) is True:
+            print str(abs(self.x) + abs(self.y))
+            exit()
+        else:
+            self.visited[point] = True
 
 def solve2(sequence):
     """Solve the puzzle part 2"""
