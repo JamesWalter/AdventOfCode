@@ -60,5 +60,17 @@ with open("./2016/day3.txt", "r") as inputfile:
                 if sum(col) - max(col) > max(col):
                     possible = possible + 1
             triple = []
+print possible
 
+#Alternate with map reduce with zip
+possible = 0
+triple = []
+with open("./2016/day3.txt", "r") as inputfile:
+    for count, line in enumerate(inputfile):
+        points = re.findall(r'\d+', line)
+        points = map(long, points)
+        triple.append(points)
+        if (count + 1) % 3 == 0:
+            possible += reduce(lambda x,y : x+y , map(lambda triangle: 1 if sum(triangle) - max(triangle) > max(triangle) else 0, zip(triple[0], triple[1], triple[2]) ))
+            triple = []
 print possible
