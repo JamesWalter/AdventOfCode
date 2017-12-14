@@ -66,7 +66,7 @@
 # numbers in the list?
 from __future__ import print_function
 
-def knot_hash(num_list, length_list, curr_pos, skip_size):
+def knot_hash_round(num_list, length_list, curr_pos, skip_size):
     size = len(num_list)
     for length in length_list:
         subset = []
@@ -89,7 +89,7 @@ def solve1(sequence, size):
     for num in range(size):
         num_list.append(num)
 
-    knot_hash(num_list, sequence, 0, 0)
+    knot_hash_round(num_list, sequence, 0, 0)
 
     return num_list[0] * num_list[1]
 
@@ -171,8 +171,7 @@ def convert_to_dense_hash(sparse_hash):
     dense_hash.append(reduce(lambda x,y: x^y, element))
     return dense_hash
 
-
-def solve2(ascii_string):
+def knot_hash(ascii_string):
     append_list = 17, 31, 73, 47, 23
     length_list = []
     num_list = []
@@ -185,13 +184,13 @@ def solve2(ascii_string):
         length_list.append(d_hex)
     map(length_list.append, append_list)
     for x in range(64):
-        curr_pos, skip_size = knot_hash(num_list, length_list, curr_pos, skip_size)
+        curr_pos, skip_size = knot_hash_round(num_list, length_list, curr_pos, skip_size)
     dense_hash = convert_to_dense_hash(num_list)
     return reduce(lambda x,y: x + y, map(lambda x: hex(x)[2:].zfill(2), dense_hash))
 
-
-input_data = 225,171,131,2,35,5,0,13,1,246,54,97,255,98,254,110
-string_data = "225,171,131,2,35,5,0,13,1,246,54,97,255,98,254,110"
+# commented out to allow reuse of the logic
+#input_data = 225,171,131,2,35,5,0,13,1,246,54,97,255,98,254,110
+#string_data = "225,171,131,2,35,5,0,13,1,246,54,97,255,98,254,110"
 #input_data = 3,4,1,5
-print(solve1(input_data, 256))
-print(solve2(string_data))
+#print(solve1(input_data, 256))
+#print(knot_hash(string_data))
