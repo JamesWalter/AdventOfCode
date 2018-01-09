@@ -117,6 +117,6 @@ def solve2(inserts, steps_per):
         size += 1
     print result
 
-
-solve1(328)
-solve2(50000000, 328)
+if __name__ == "__main__":
+    solve1(328)
+    solve2(50000000, 328)

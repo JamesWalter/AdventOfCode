@@ -106,10 +106,9 @@ def num_groups(graph):
         groups += 1
     print groups
 
-
-prog_graph = build_graph("./2017/day12.txt")
-
-print 'Part 1'
-print group_size('0', prog_graph)
-print 'Part 2'
-num_groups(prog_graph)
+if __name__ == "__main__":
+    prog_graph = build_graph("./2017/day12.txt")
+    print 'Part 1'
+    print group_size('0', prog_graph)
+    print 'Part 2'
+    num_groups(prog_graph)

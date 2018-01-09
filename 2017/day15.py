@@ -146,8 +146,6 @@ def solve2(start_a, start_b):
         
     return total
 
-
-print solve1(516, 190)
-print solve2(516, 190)
-
-
+if __name__ == "__main__":
+    print solve1(516, 190)
+    print solve2(516, 190)

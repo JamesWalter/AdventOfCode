@@ -143,8 +143,8 @@ def move(pos, grid, seen):
             #we are done
             return pos, True
 
-
-my_grid = build_grid("./2017/day19.txt")
-my_letters, my_steps = navigate(my_grid)
-print my_letters
-print my_steps
+if __name__ == "__main__":
+    my_grid = build_grid("./2017/day19.txt")
+    my_letters, my_steps = navigate(my_grid)
+    print my_letters
+    print my_steps

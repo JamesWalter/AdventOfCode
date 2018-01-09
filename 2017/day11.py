@@ -59,4 +59,5 @@ def solve(filename):
         print "Part 2"
         print max_dist
 
-solve("./2017/day11.txt")   
+if __name__ == "__main__":
+    solve("./2017/day11.txt")   

@@ -158,8 +158,8 @@ def get_neighbors(grid, point):
         neighbors.append((point[0], point[1] - 1))
     return neighbors
                    
-
-b_list = build_list(PUZZLE_IN, 128)
-print get_used(b_list)
-bin_grid = build_grid(b_list)
-print num_groups(bin_grid)
+if __name__ == "__main__":
+    b_list = build_list(PUZZLE_IN, 128)
+    print get_used(b_list)
+    bin_grid = build_grid(b_list)
+    print num_groups(bin_grid)

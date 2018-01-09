@@ -188,9 +188,9 @@ def knot_hash(ascii_string):
     dense_hash = convert_to_dense_hash(num_list)
     return reduce(lambda x,y: x + y, map(lambda x: hex(x)[2:].zfill(2), dense_hash))
 
-# commented out to allow reuse of the logic
-#input_data = 225,171,131,2,35,5,0,13,1,246,54,97,255,98,254,110
-#string_data = "225,171,131,2,35,5,0,13,1,246,54,97,255,98,254,110"
-#input_data = 3,4,1,5
-#print(solve1(input_data, 256))
-#print(knot_hash(string_data))
+if __name__ == "__main__":
+    input_data = 225,171,131,2,35,5,0,13,1,246,54,97,255,98,254,110
+    string_data = "225,171,131,2,35,5,0,13,1,246,54,97,255,98,254,110"
+    input_data = 3,4,1,5
+    print(solve1(input_data, 256))
+    print(knot_hash(string_data))

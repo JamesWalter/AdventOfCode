@@ -64,6 +64,7 @@ def execute(filename):
             highest = max_instruction if max_instruction > highest else highest
         return max_instruction, highest
 
-part1, part2 = execute("./2017/day8.txt")
-print(part1)
-print(part2)
+if __name__ == "__main__":
+    part1, part2 = execute("./2017/day8.txt")
+    print(part1)
+    print(part2)

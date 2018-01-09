@@ -79,9 +79,7 @@ def solve_2(filename):
             if anag is False:
                 valid += 1
         print(valid)
-
-#solve_1("./2017/day4.txt")  
-#solve_2("./2017/day4.txt")     
+   
 
 #After circling back...
 def solve1_better(filename):
@@ -95,8 +93,7 @@ def solve1_better(filename):
             valid += 1 if len(pass_list) == len(pass_set) else 0
         print(valid)        
 
-#Better solutions
-solve1_better("./2017/day4.txt")         
+    
 
 def solve2_better(filename):
     """ Better solution to part 2 """
@@ -110,5 +107,11 @@ def solve2_better(filename):
 
         print(valid)  
 
-solve2_better("./2017/day4.txt") 
+if __name__ == "__main__":
+    #solve_1("./2017/day4.txt")  
+    #solve_2("./2017/day4.txt")
+
+    #Better solutions
+    solve1_better("./2017/day4.txt")     
+    solve2_better("./2017/day4.txt") 
             

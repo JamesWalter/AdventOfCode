@@ -105,7 +105,8 @@ def solve2(sequence):
         found, steps, banks = realloc(steps, banks, seen)
     return steps
 
-puzzle_input = "5	1	10	0	1	7	13	14	3	12	8	10	7	12	0	6"
-steps_found, end_banks = solve1(puzzle_input)
-print steps_found
-print solve2(puzzle_input)
+if __name__ == "__main__":
+    puzzle_input = "5	1	10	0	1	7	13	14	3	12	8	10	7	12	0	6"
+    steps_found, end_banks = solve1(puzzle_input)
+    print steps_found
+    print solve2(puzzle_input)

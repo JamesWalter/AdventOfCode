@@ -162,7 +162,7 @@ def solve2(filename, root):
         set_net(nodes, root)
         return get_fix(nodes, root)
 
-start = solve1("./2017/day7.txt")
-print(start)
-print(solve2("./2017/day7.txt", start))
-
+if __name__ == "__main__":
+    start = solve1("./2017/day7.txt")
+    print(start)
+    print(solve2("./2017/day7.txt", start))

@@ -301,7 +301,7 @@ def execute_instruction2(inst, prog, msg_queue):
     elif offset == 0 and status == 'ok':
         prog['curr_line'] += 1
 
-
-prog_list = read_program("./2017/day18.txt")
-execute_program(prog_list)
-execute_programs(prog_list)
+if __name__ == "__main__":
+    prog_list = read_program("./2017/day18.txt")
+    execute_program(prog_list)
+    execute_programs(prog_list)

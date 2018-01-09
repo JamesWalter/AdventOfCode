@@ -89,11 +89,12 @@ def solve2(dance_list, sequence, num_iters):
     indx = num_iters % 24
     return possible[indx]
 
-programs = ['a', 'b', 'c', 'd', 'e',
-            'f', 'g', 'h', 'i', 'j',
-            'k', 'l', 'm', 'n', 'o',
-            'p']
-d_list = dance_list("./2017/day16.txt")
-#solve1(d_list, programs)
-#print reduce(lambda x, y: x + y, programs)
-print solve2(d_list, programs, 1000000000)
+if __name__ == '__main__':
+    programs = ['a', 'b', 'c', 'd', 'e',
+                'f', 'g', 'h', 'i', 'j',
+                'k', 'l', 'm', 'n', 'o',
+                'p']
+    d_list = dance_list("./2017/day16.txt")
+    #solve1(d_list, programs)
+    #print reduce(lambda x, y: x + y, programs)
+    print solve2(d_list, programs, 1000000000)

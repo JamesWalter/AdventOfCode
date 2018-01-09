@@ -115,6 +115,7 @@ def solve(filename):
         print total
         print 'Part 2'
         print count_g
-                
-solve("./2017/day9.txt")        
+
+if __name__ == "__main__":
+    solve("./2017/day9.txt")        
 

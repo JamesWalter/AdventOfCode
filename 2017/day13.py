@@ -348,7 +348,8 @@ def solve2(firewall):
             elif sev is None and count == (fw_size - 1):
                 return delay
 
-fw = build_firewall("./2017/day13.txt")
-print solve1(fw)
-print solve2(fw)
+if __name__ == "__main__":
+    fw = build_firewall("./2017/day13.txt")
+    print solve1(fw)
+    print solve2(fw)
 

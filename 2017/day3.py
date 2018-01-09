@@ -117,7 +117,8 @@ def build_grid(check_val):
         grid[new_point] = new_val
         last = new_point
 
-# Part 1
-print distance(347991)
-# Part 2
-print build_grid(347991)
+if __name__ == "__main__":
+    # Part 1
+    print distance(347991)
+    # Part 2
+    print build_grid(347991)

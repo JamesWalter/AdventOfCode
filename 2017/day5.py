@@ -88,5 +88,6 @@ def solve2(filename):
                     program[index] += 1
             index = new_index
 
-print(solve1("./2017/day5.txt"))
-print(solve2("./2017/day5.txt"))
+if __name__ == "__main__":
+    print(solve1("./2017/day5.txt"))
+    print(solve2("./2017/day5.txt"))
