@@ -27,7 +27,7 @@
 import day18
 
 def execute_program(program):
-    registers = {"a": 1, "b": 0, "c": 0, "d": 0,
+    registers = {"a": 0, "b": 0, "c": 0, "d": 0,
                  "e": 0, "f": 0, "g": 0, "h": 0}
     curr_line = 1
     size = len(program)
@@ -39,8 +39,7 @@ def execute_program(program):
         if curr_line < 1 or curr_line >= size:
             break
         curr_inst = program[curr_line]
-        if curr_inst[1] == 'h':
-            print 'h'
+        
         if curr_inst[0] == 'mul':
             count += 1
 
@@ -80,6 +79,52 @@ def subtract(register, operand, registers):
         registers[register] = 0
     registers[register] -= operand
 
+# --- Part Two ---
+# Now, it's time to fix the problem.
+# 
+# The debug mode switch is wired directly to register a. You flip the 
+# switch, which makes register a now start at 1 when the program is 
+# executed.
+# 
+# Immediately, the coprocessor begins to overheat. Whoever wrote this 
+# program obviously didn't choose a very efficient implementation. You'll 
+# need to optimize the program if it has any hope of completing before Santa 
+# needs that printer working.
+# 
+# The coprocessor's ultimate goal is to determine the final value left in 
+# register h once the program completes. Technically, if it had that... it 
+# wouldn't even need to run the program.
+# 
+# After setting register a to 1, if the program were to run to completion, 
+# what value would be left in register h?
+
+def isPrime(n):
+    factors = set(reduce(list.__add__, 
+                ([i, n//i] for i in range(1, int(pow(n, 0.5)) + 1) if n % i == 0)))
+    non_prime = filter(lambda x: x != n and x != 1.0, list(factors))
+    if non_prime:
+        return False
+    else:
+        return True
+
+def solve2():
+    #Only subset of registers needed
+    h = 0
+    b = 84.0
+    c = b
+    b = b * 100.0
+    b = b + 100000.0
+    c = b + 17000.0
+
+    #Optimized program
+    while b <= c:
+        if isPrime(b) == False:
+            h += 1
+        b += 17.0
+
+    return h
+
 if __name__ == "__main__":
     my_program = day18.read_program("./2017/day23.txt")
-    execute_program(my_program)
+    print execute_program(my_program)
+    print solve2()
